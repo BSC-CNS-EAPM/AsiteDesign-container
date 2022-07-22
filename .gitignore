@@ -1,2 +1,6 @@
 *.zip
 *env
+*tar
+*gz
+*bz2
+*sif
