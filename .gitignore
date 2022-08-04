@@ -4,3 +4,8 @@
 *gz
 *bz2
 *sif
+*.out
+*.yaml
+*.params
+*.sub
+*.pdb

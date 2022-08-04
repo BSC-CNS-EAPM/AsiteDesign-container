@@ -13,30 +13,32 @@ ARG USER
 ARG PASS
 ENV USER=$USER
 ENV PASS=$PASS
+ENV PYTHONPATH=/home/EDesign_p
+ENV PATH=/home/EDesign_p:$PATH
 
 # Set the workind directory
 WORKDIR /home
 
 RUN pip install --upgrade pip wheel
 
-# Install
+# Install en conda
 RUN pip install ipython
 
-# Extract
+# Extract en conda
 ADD PyRosetta4.Release.python37.ubuntu.release-324.tar.bz2 .
 RUN cd PyRosetta4.Release.python37.ubuntu.release-324/setup/ && \
     python setup.py install
 
-# Install biotite
+# Install biotite conda
 RUN pip install biotite
 
-# Install MDAnalysis
+# Install MDAnalysis conda
 RUN pip install --upgrade MDAnalysis
 
-# Install mpi4py
+# Install mpi4py conda
 RUN python -m pip install mpi4py
 
-#Install OpenMM
+#Install OpenMM conda
 RUN wget http://www.fftw.org/fftw-3.3.10.tar.gz && \
     tar xfz fftw-* && \
     rm fftw-3.3.10.tar.gz && \
@@ -58,10 +60,11 @@ RUN conda install -c omnia openmm && \
     python -m simtk.testInstallation
 
 # Install EDisgn
-ADD EDesign_p-main.tar.gz .
-RUN cd EDesign_* && \
-    python Setup.py build && \
+ADD EDesign_p.tar.gz /home
+WORKDIR /home/EDesign_p
+RUN python Setup.py build && \
     python Setup.py install
 
-
-#CMD ["/bin/bash"]
+WORKDIR /home/hostDirectory
+# Command to run at start of container
+#CMD ["sh", "-c", "python -m ActiveSiteDesign $1.yaml > $1.out"]
