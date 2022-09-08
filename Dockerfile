@@ -30,8 +30,6 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.12.0-Linu
     echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
 
-RUN pip3 install --upgrade wheel MDAnalysis
-
 # Install
 RUN pip3 install ipython biotite
 
@@ -46,7 +44,7 @@ RUN cd PyRosetta4.Release.python37.ubuntu.release-324/setup/ && \
 #RUN conda activate edesign && \
 #RUN sed '/conda activate base/d' ~/.bashrc # no funciona idk why
 #RUN echo "conda activate edesign" >> ~/.bashrc
-RUN conda install -c omnia -c conda-forge openmm yaml mpi4py
+RUN conda install -c omnia -c conda-forge mpi openmm pyyaml mpi4py psutil #mdanalysis
 
 #Install fftw
 RUN wget http://www.fftw.org/fftw-3.3.10.tar.gz && \
