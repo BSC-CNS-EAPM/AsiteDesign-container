@@ -10,3 +10,4 @@
 *.sub
 *.pdb
 envs
+*.so
