@@ -27,8 +27,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.12.0-Linu
     rm ~/miniconda.sh && \
     /opt/conda/bin/conda clean -tipsy && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc #&& \
-    #echo "conda activate base" >> ~/.bashrc
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc
 
 # Install PyRosetta
 RUN conda config --add channels https://${USER}:${PASS}@conda.graylab.jhu.edu
