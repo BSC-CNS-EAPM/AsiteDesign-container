@@ -5,12 +5,10 @@
 *bz2
 *sif
 *.out
-e1.yaml
+*.yaml
 *.params
 *.sub
 *.pdb
 envs
 *.so
-sharedDirectory
-EDesign (còpia).yaml
-EDesign.yaml
+env.yaml
