@@ -28,15 +28,17 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.12.0-Linu
     rm ~/miniconda.sh && \
     /opt/conda/bin/conda clean -tipsy && \
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc #&& \
+    #echo "conda activate base" >> ~/.bashrc
 
 # Install PyRosetta
-RUN conda config --add channels https://${USER}:${PASS}@conda.graylab.jhu.edu
-RUN conda install pyrosetta=2020.20+release.c522e9e
-#ADD e.yaml /home
-#RUN conda env create -f e.yaml \
-#    echo "conda activate edesign" >> ~/.bashrc
+#RUN conda config --add channels https://${USER}:${PASS}@conda.graylab.jhu.edu
+#RUN conda install pyrosetta=2020.20+release.c522e9e
+RUN echo "Creating env"
+COPY env.yaml /home/
+RUN conda env create -f env.yaml
+RUN rm /home/env.yaml
+RUN echo "conda activate edesign" >> ~/.bashrc
 
 # Extra packages
 RUN pip install biotite MDAnalysis
