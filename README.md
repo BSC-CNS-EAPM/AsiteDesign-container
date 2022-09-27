@@ -3,7 +3,7 @@ This gitHub contains the mount_image.sh to create the container for AsiteDesign 
 
 AsiteDesign repository combines the PyRosetta modules with enhanced sampling techniques to design both the catalytic and non-ctalytic residues in given active sites.
 
-The github for the AsiteDesign can be found: [Github](https://github.com/masoudk/AsiteDesign)
+The github of AsiteDesign can be found: [Github](https://github.com/masoudk/AsiteDesign)
 
 Disclaimer
 ---
