@@ -35,3 +35,14 @@ To create the image:
   ```
   ./mount_image.sh -u USER -p PASSWORD
   ```
+
+Using AsiteDesign
+---
+To use AsiteDesign:
+```
+singularity exec edisign.sif python -m ActiveSiteDesign input.yaml > output.out
+```
+To use AsiteDesign with mpi and singularity:
+```
+mpirun -n CPUs singularity exec edisign.sif python -m ActiveSiteDesign input.yaml > output.out
+```
