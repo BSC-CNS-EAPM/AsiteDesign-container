@@ -44,8 +44,8 @@ while getopts "h:u:p:" option; do
         exit 0;;
    esac
 done
-echo "################# Building docker image #################"
+echo -e "\n################# Building docker image #################\n"
 sudo docker build --build-arg USER=$user --build-arg PASS=$pass -t edesign:latest .
 
-echo "################# Creating singularity image #################"
+echo -e "\n################# Creating singularity image #################\n"
 sudo singularity build edesign.sif docker-daemon://edesign:latest
