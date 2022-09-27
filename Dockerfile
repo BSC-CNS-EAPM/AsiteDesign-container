@@ -1,6 +1,5 @@
 FROM ubuntu:latest
 MAINTAINER Albert Cañellas <albert.canellas@bsc.es>
-#FROM continuumio/miniconda3
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
@@ -56,4 +55,4 @@ WORKDIR /home/EDesign_p
 RUN python Setup.py build && \
     python Setup.py install
 
-WORKDIR /home/hostDirectory
+WORKDIR /home/projects

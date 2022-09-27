@@ -1,7 +1,7 @@
 *.zip
 *env
 *tar
-*gz
+gz
 *bz2
 *sif
 *.out
@@ -9,6 +9,7 @@
 *.params
 *.sub
 *.pdb
+*.def
 envs
-*.so
 env.yaml
+EDesignTools-MKL.tar.gz
