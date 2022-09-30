@@ -12,4 +12,7 @@ gz
 *.def
 envs
 env.yaml
+.dockerignore
+.gitattributes
+.gitignore
 EDesignTools-MKL.tar.gz

@@ -33,16 +33,37 @@ To create the image:
   3. Add executing rights to mount_image.sh.
   4. Execute mount_image.sh with PyRosetta credentials as arguments.
   ```
-  ./mount_image.sh -u USER -p PASSWORD
+  ./mount_image.sh
   ```
+
+Setup AsiteDesign
+---
+Files needed:
+- **An input PDB file** with the complex (ligand docked to the protein, otherwise the ligand can be placed by the code, but it's better to have it already bound).
+- **The parameters of all ligands**, cofactors, and non-conventional amino acids that appear in the simulation (to generate them, for instance, save the ligand as mol2 file from Pymol. Then, use the facilitated molfile_to_params Python script to transform to a params file).
+- **An input yaml**.
+
+The parameters that should be set in the **input yaml** file are the following:
+
+	· PDB --> Add the name of your input PDB file
+	· ParameterFiles --> Add the name of all the used params files (list them with "-")
+	· Name --> Add the name of the desired output folder
+	· DesignResidues --> Add the list of residues allowed to be mutated (ZZ leaves the residue as frozen. ZX stands for not mutable, but repackable. XX stands for mutable and repackable and XX+ adds the option to use the native residue as well. You can also specify to which residues you want to allow it to mutate by listing them, for instance, 100-A: AILFWVPY)
+	· CatalyticResidues --> Specify the number of residues of the active site that wants to be added (RES1, RES2 ... RESN: H)
+	· Ligands, 1-L (you have to specify the ligand by giving the residue number and the chain of the specific LIG). Also, the torsions that want to be excluded must be specified by the user ("ExcludedTorsions")
+	· Constraints --> Add the distance and sequence constraints that you want. The distance constraints should be added by passing two residues (with residue_number-chain) and two atoms (atomname) and to which values you want to constraint them (lb: value in angstroms, hb: value in angstroms)
+	· nIterations --> Number of adaptive sampling epochs that want to be performed
+	· nSteps --> Number of steps performed in each epoch/iteration
+	· nPoses --> Number of final poses (mutants/designs) to be reported (each one given to a processor/CPU)
+	· Time --> Time in the queue (if it's run in a cluster)
 
 Using AsiteDesign
 ---
 To use AsiteDesign:
 ```
-singularity exec edisign.sif python -m ActiveSiteDesign input.yaml > output.out
+singularity exec edesign.sif python -m ActiveSiteDesign input.yaml > output.out
 ```
 To use AsiteDesign with mpi and singularity:
 ```
-mpirun -n CPUs singularity exec edisign.sif python -m ActiveSiteDesign input.yaml > output.out
+mpirun -n CPUs singularity exec edesign.sif python -m ActiveSiteDesign input.yaml > output.out
 ```
