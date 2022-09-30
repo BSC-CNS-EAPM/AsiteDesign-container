@@ -15,4 +15,5 @@ env.yaml
 .dockerignore
 .gitattributes
 .gitignore
+EDesign_howto_instructions.txt
 EDesignTools-MKL.tar.gz
