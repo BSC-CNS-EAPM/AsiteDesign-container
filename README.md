@@ -40,7 +40,7 @@ Setup AsiteDesign
 ---
 Files needed:
 - **An input PDB file** with the complex (ligand docked to the protein, otherwise the ligand can be placed by the code, but it's better to have it already bound).
-- **The parameters of all ligands**, cofactors, and non-conventional amino acids that appear in the simulation (to generate them, for instance, save the ligand as mol2 file from Pymol. Then, use the facilitated molfile_to_params Python script to transform to a params file).
+- **The parameters of all ligands**, cofactors, and non-conventional amino acids that appear in the simulation (to generate them, for instance, save the ligand as mol2 file from Pymol. Then, use for exemple the molfile_to_params Python script from Rosetta to transform to a params file).
 - **An input yaml**.
 
 The parameters that should be set in the **input yaml** file are the following:
@@ -67,3 +67,7 @@ To use AsiteDesign with mpi and singularity:
 ```
 mpirun -n CPUs singularity exec edesign.sif python -m ActiveSiteDesign input.yaml > output.out
 ```
+
+AsiteDesign exemple
+---
+In the folder "Templatized_control_file" you will find an exemple yaml for "Directed evolution" and "Design catalitic site" with its corresponding pdb file.

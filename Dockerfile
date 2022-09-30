@@ -50,8 +50,8 @@ RUN wget http://www.fftw.org/fftw-3.3.10.tar.gz && \
     make install
 
 # Install AsiteDesign
-ADD EDesign_p.tar.gz /home
-WORKDIR /home/EDesign_p
+RUN git clone https://github.com/masoudk/AsiteDesign.git /home
+WORKDIR /home/AsiteDesign
 RUN python Setup.py build && \
     python Setup.py install
 
