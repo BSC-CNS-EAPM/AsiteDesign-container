@@ -33,7 +33,7 @@ DesignResidues: # List of residues that want to be mutable during the simulation
   412-B:  XX+
   414-B:  XX+
 
-#The CatalyticResidues, Defines the Catalytic domain to be designed. Each residue 
+#The CatalyticResidues, Defines the Catalytic domain to be designed. Each residue
 # is defimed as "Name: TargetAminoAcid(s)". In this example input file, it would
 # be the case for designing a hydrolase site (catalytic triad)
 CatalyticResidues:
@@ -81,7 +81,7 @@ Constraints: # Both bond/distance and sequence constraints can be applied. Its k
     lb: 3.0 # Lower bound of the defined distance constraint
     hb: 4.0 # Higher bound of the defined distance constraint
     sd: 100.0 # standard deviation. Its related to the "K" force constant by sd = 1/sqrt(K)
-	      # That is, a samll sd (0.1) corresponds to a strong force while a large sd (0.9)
+              # That is, a samll sd (0.1) corresponds to a strong force while a large sd (0.9)
               # corresponds to a weak force
 
   # SER-HIS
@@ -121,23 +121,23 @@ Constraints: # Both bond/distance and sequence constraints can be applied. Its k
   cst0:
     type: B
     resi: 1-C
-    atomi: H11 
-    resj: 1-D 
+    atomi: H11
+    resj: 1-D
     atomj: N2
     lb: 2.0 # Lower bound of the defined distance constraint
     hb: 3.5 # Higher bound of the defined distance constraint
     sd: 100.0 # standard deviation. Its related to the "K" force constant by sd = 1/sqrt(K)
               # That is, a samll sd (0.1) corresponds to a strong force while a large sd (0.9)
               # corresponds to a weak force
-    
+
   cst4:
     type: S
     weight: 1 # Increase weight to be more conservative
     reference: Input_file.pdb # PDB file to use as reference sequence
 
-nIterations: 100         # Number of adaptive sampling to be performed, i.e. numer of spawning
-nPoses: 100              # number of final poses, should always be nPoses <= nproccesses - 1
-nSteps: 25               # number of steps for each round of exploration
+nIterations: 3         # Number of adaptive sampling to be performed, i.e. numer of spawning
+nPoses: 3              # number of final poses, should always be nPoses <= nproccesses - 1
+nSteps: 1               # number of steps for each round of exploration
 Anneal: True             # Performs temperature annealing. This is default behavior
 kT_high: 500             # kT at High Temperature
 kT_low: 1                # kT at low Temperature
@@ -145,12 +145,12 @@ kT_decay: True           # Exponential temperatur decay
 kT_highScale: True       # Linear scaling of the kT_high over iterations. Default True.
 WriteALL: True
 
-RankingMetric:  FullAtom     
-SpawningMethod: Adaptive                     
-SpawningMetric: Split                   
+RankingMetric:  FullAtom
+SpawningMethod: Adaptive
+SpawningMetric: Split
 SpawningMetricSteps:
     # IterationRatio  method              # Defines a combined SpawningMetric
   - 0.8 FullAtomWithConstraints           # Untile iteration (0.5 * nIterations) use FullAtomWithConstraints
   - 1.0 FullAtom                          # untile iteration (1.0 * nIterations) use OnlyConstraints
 
-Time: 48 # Time in the queue
+Time: 0 # Time in the queue

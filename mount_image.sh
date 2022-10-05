@@ -2,6 +2,7 @@
 ################################################################################
 # Help                                                                         #
 ################################################################################
+set -e
 Help()
 {
    # Display Help
@@ -30,8 +31,8 @@ while getopts "h" option; do
    esac
 done
 # Get user and password
-read -p "User: " user
-read -s -p "Password: " pass
+read -p "Rosetta User: " user
+read -s -p "Rosetta Password: " pass
 
 echo -e "\n################# Building docker image #################\n"
 sudo docker build --build-arg USER=$user --build-arg PASS=$pass -t asitedesign:latest .
