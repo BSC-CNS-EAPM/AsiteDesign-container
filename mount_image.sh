@@ -30,6 +30,7 @@ while getopts "h" option; do
         exit;;
    esac
 done
+
 # Get user and password
 read -p "Rosetta User: " user
 read -s -p "Rosetta Password: " pass

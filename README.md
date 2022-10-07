@@ -1,7 +1,7 @@
 # AsiteDesign_container
 This github contains the mount_image.sh to create the container for AsiteDesign from the Dockerfile.
 
-AsiteDesign combines the PyRosetta modules with enhanced sampling techniques to design both the catalytic and non-ctalytic residues in given active sites.
+AsiteDesign combines the PyRosetta modules with enhanced sampling techniques to design both the catalytic and non-catalytic residues in given active sites.
 
 The github of AsiteDesign can be found: [Github](https://github.com/masoudk/AsiteDesign)
 
