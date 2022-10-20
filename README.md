@@ -29,7 +29,7 @@ To create the image:
   ```
   git clone https://github.com/AlbertCS/AsiteDesign_container.git
   ```
-  2. Decompress the repository.
+  2. Unzip the repository.
   3. Add executing rights to mount_image.sh.
   4. Execute mount_image.sh with PyRosetta credentials as arguments.
   ```
