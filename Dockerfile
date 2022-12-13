@@ -1,5 +1,5 @@
-FROM bsceapm/asitedesign_base:3.0
-MAINTAINER Albert Cañellas <albert.canellas@bsc.es>
+FROM bsceapm/asitedesign_base:4.0
+LABEL maintainer="Albert Cañellas <albert.canellas@bsc.es>"
 
 ARG USER
 ARG PASS
