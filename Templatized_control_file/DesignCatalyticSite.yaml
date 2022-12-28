@@ -1,7 +1,6 @@
 PDB: Input_file.pdb # Input file
 
 ParameterFiles: # Put all the parameters of the ligands and cofactors here. Get the ligand and save it as mol2 file with Pymol then convert it with the parm.sh file.
-  - COF.fa.params
   - LIG.fa.params
 
 Name: DesignCatalyticSite_job # Name of the job, which will be used for the output folders
@@ -20,20 +19,36 @@ ActiveSiteLoops: 1 # Number of iterations of the ActiveSiteDesignMode
 nNoneCatalytic: 1 # Number of residues that are mutated/optimized by overall iteration
 
 DesignResidues: # List of residues that want to be mutable during the simulation
-  66-A:   XX+
-  122-A:  XX+
-  251-A:  XX+
-  253-A:  XX+
-  265-A:  XX+
-  336-B:  XX+
-  338-B:  XX+
-  345-B:  XX+
-  379-B:  XX+
-  410-B:  XX+
-  412-B:  XX+
-  414-B:  XX+
+     28-A   : ZX 
+     29-A   : ZX 
+     30-A   : ZX 
+     34-A   : ZX 
+     57-A   : ZX 
+     69-A   : ZX 
+     93-A   : ZX 
+     95-A   : ZX 
+     120-A  : ZX 
+     121-A  : ZX 
+     125-A  : ZX 
+     135-A  : ZX 
+     139-A  : ZX 
+     140-A  : ZX 
+     143-A  : ZX 
+     147-A  : ZX 
+     154-A  : ZX 
+     155-A  : ZX 
+     158-A  : ZX 
+     162-A  : ZX 
+     183-A  : ZX 
+     191-A  : ZX 
+     195-A  : ZX 
+     198-A  : ZX 
+     199-A  : ZX 
+     224-A  : ZX 
+     225-A  : ZX 
+     230-A  : ZX 
 
-#The CatalyticResidues, Defines the Catalytic domain to be designed. Each residue
+#The CatalyticResidues, Defines the Catalytic domain to be designed. Each residue 
 # is defimed as "Name: TargetAminoAcid(s)". In this example input file, it would
 # be the case for designing a hydrolase site (catalytic triad)
 CatalyticResidues:
@@ -42,7 +57,7 @@ CatalyticResidues:
   RES3: D-E
 
 Ligands:
-  - 1-C: # The different parameters of the perturbable ligand, leave the majority unchanged
+  - 1-L: # The different parameters of the perturbable ligand, leave the majority unchanged
       RigidBody: True
       Packing: True
       PerturbationMode: MC
@@ -68,13 +83,13 @@ Ligands:
       MinGrid: 4
       GridInterval: -4
       ExcludedTorsions: # Torsions/dihedrals of the ligand to be excluded from the sampling. Useful for big ligands with a lot of torsions, and thus, degrees of freedom (such as PE oligomers)
-        - ['C3', 'C6', 'O6', 'H12']
+        - ['C11', 'C14', 'C16', 'C17']
 
 Constraints: # Both bond/distance and sequence constraints can be applied. Its key to define the the essential catalytic distances to have optimal designs
   # ESTER/AMIDE-SER (referring to the distance between the reactive C and the nucleophile O of the Ser residue)
   cst0:
     type: B
-    resi: 1-C
+    resi: 1-L
     atomi: C1
     resj: RES1
     atomj: OG
@@ -118,24 +133,12 @@ Constraints: # Both bond/distance and sequence constraints can be applied. Its k
     hb: 8.0
     sd: 50.0
 
-  cst0:
-    type: B
-    resi: 1-C
-    atomi: H11
-    resj: 1-D
-    atomj: N2
-    lb: 2.0 # Lower bound of the defined distance constraint
-    hb: 3.5 # Higher bound of the defined distance constraint
-    sd: 100.0 # standard deviation. Its related to the "K" force constant by sd = 1/sqrt(K)
-              # That is, a samll sd (0.1) corresponds to a strong force while a large sd (0.9)
-              # corresponds to a weak force
-
   cst4:
     type: S
     weight: 1 # Increase weight to be more conservative
     reference: Input_file.pdb # PDB file to use as reference sequence
 
-nIterations: 3         # Number of adaptive sampling to be performed, i.e. numer of spawning
+nIterations: 2         # Number of adaptive sampling to be performed, i.e. numer of spawning
 nPoses: 3              # number of final poses, should always be nPoses <= nproccesses - 1
 nSteps: 1               # number of steps for each round of exploration
 Anneal: True             # Performs temperature annealing. This is default behavior
@@ -145,12 +148,12 @@ kT_decay: True           # Exponential temperatur decay
 kT_highScale: True       # Linear scaling of the kT_high over iterations. Default True.
 WriteALL: True
 
-RankingMetric:  FullAtom
-SpawningMethod: Adaptive
-SpawningMetric: Split
+RankingMetric:  FullAtom     
+SpawningMethod: Adaptive                     
+SpawningMetric: Split                   
 SpawningMetricSteps:
     # IterationRatio  method              # Defines a combined SpawningMetric
   - 0.8 FullAtomWithConstraints           # Untile iteration (0.5 * nIterations) use FullAtomWithConstraints
   - 1.0 FullAtom                          # untile iteration (1.0 * nIterations) use OnlyConstraints
 
-Time: 0 # Time in the queue
+Time: 48 # Time in the queue

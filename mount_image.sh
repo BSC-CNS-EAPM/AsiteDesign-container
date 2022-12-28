@@ -39,4 +39,4 @@ echo -e "\n################# Building docker image #################\n"
 sudo docker build --build-arg USER=$user --build-arg PASS=$pass -t asitedesign:latest .
 
 echo -e "\n################# Creating singularity image #################\n"
-#sudo singularity build asitedesign.sif docker-daemon://asitedesign:latest
+sudo singularity build asitedesign.sif docker-daemon://asitedesign:latest

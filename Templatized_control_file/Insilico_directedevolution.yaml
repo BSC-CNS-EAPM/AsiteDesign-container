@@ -1,7 +1,6 @@
 PDB: Input_file.pdb # Input file
 
 ParameterFiles: # Put all the parameters of the ligands and cofactors here. Get the ligand and save it as mol2 file with Pymol then convert it with the parm.sh file.
-  - COF.fa.params
   - LIG.fa.params
 
 Name: Insilico_directedevolution_job # Name of the job, which will be used for the output folders
@@ -20,21 +19,37 @@ ActiveSiteLoops: 3 # Number of iterations of the ActiveSiteDesignMode
 nNoneCatalytic: 1 # Number of residues that are mutated/optimized by overall iteration
 
 DesignResidues: # List of residues that want to be mutable during the simulation
-  66-A:   XX+
-  122-A:  XX+
-  251-A:  XX+
-  253-A:  XX+
-  265-A:  XX+
-  336-B:  XX+
-  338-B:  XX+
-  345-B:  XX+
-  379-B:  XX+
-  410-B:  XX+
-  412-B:  XX+
-  414-B:  XX+
+     28-A   : XX+
+     29-A   : XX+
+     30-A   : XX+
+     34-A   : XX+
+     57-A   : XX+
+     69-A   : XX+
+     93-A   : XX+
+     95-A   : XX+
+     120-A  : XX+
+     121-A  : XX+
+     125-A  : XX+
+     135-A  : XX+
+     139-A  : XX+
+     140-A  : XX+
+     143-A  : XX+
+     147-A  : XX+
+     154-A  : XX+
+     155-A  : XX+
+     158-A  : XX+
+     162-A  : XX+
+     183-A  : XX+
+     191-A  : XX+
+     195-A  : XX+
+     198-A  : XX+
+     199-A  : XX+
+     224-A  : XX+
+     225-A  : XX+
+     230-A  : XX+
 
 Ligands:
-  - 1-C: # The different parameters of the perturbable ligand, leave the majority unchanged
+  - 1-L: # The different parameters of the perturbable ligand, leave the majority unchanged
       RigidBody: True
       Packing: True
       PerturbationMode: MC
@@ -60,15 +75,15 @@ Ligands:
       MinGrid: 4
       GridInterval: -4
       ExcludedTorsions: # Torsions/dihedrals of the ligand to be excluded from the sampling. Useful for big ligands with a lot of torsions, and thus, degrees of freedom (such as PE oligomers)
-        - ['C3', 'C6', 'O6', 'H12']
+        - ['C11', 'C14', 'C16', 'C17']
 
 Constraints: # Both bond/distance and sequence constraints can be applied
   cst0:
     type: B
-    resi: 1-C
-    atomi: H11 
-    resj: 1-D 
-    atomj: N2
+    resi: 1-L
+    atomi: C1 
+    resj: 94-A 
+    atomj: OG
     lb: 2.0 # Lower bound of the defined distance constraint
     hb: 3.5 # Higher bound of the defined distance constraint
     sd: 100.0 # standard deviation. Its related to the "K" force constant by sd = 1/sqrt(K)
@@ -80,9 +95,9 @@ Constraints: # Both bond/distance and sequence constraints can be applied
     weight: 1 # Increase weight to be more conservative
     reference: Input_file.pdb # PDB file to use as reference sequence
 
-nIterations: 100         # Number of adaptive sampling to be performed, i.e. numer of spawning
-nPoses: 100              # number of final poses, should always be nPoses <= nproccesses - 1
-nSteps: 25               # number of steps for each round of exploration
+nIterations: 2         # Number of adaptive sampling to be performed, i.e. numer of spawning
+nPoses: 3              # number of final poses, should always be nPoses <= nproccesses - 1
+nSteps: 1               # number of steps for each round of exploration
 Anneal: True             # Performs temperature annealing. This is default behavior
 kT_high: 500             # kT at High Temperature
 kT_low: 1                # kT at low Temperature

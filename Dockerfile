@@ -1,9 +1,16 @@
-FROM bsceapm/asitedesign_base:4.0
-LABEL maintainer="Albert Cañellas <albert.canellas@bsc.es>" \
+################## BASE IMAGE ######################
+
+FROM bsceapm/asitedesign_base:5.0
+
+################## METADATA ######################
+
+LABEL maintainer="Albert Cañellas-Sole <albert.canellas@bsc.es>" \
     container="AsiteDesign" \
     about.summary="design catalytic residues, perform in silico directed evolution of an existing active site." \
     about.home="https://github.com/masoudk/AsiteDesign" \
     software.version="1.0"
+
+################## INSTALLATION ######################
 
 ARG USER
 ARG PASS
