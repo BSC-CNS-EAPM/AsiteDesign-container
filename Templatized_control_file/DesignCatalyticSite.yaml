@@ -13,7 +13,7 @@ SoftRepulsion: False
 
 
 # Active site design options
-ActiceSiteDesignMode: MC # The active site can be minimized to optimize ligand binding (MIN) or it can perturbed by Monte Carlo (MC)
+ActiveSiteDesignMode: MC # The active site can be minimized to optimize ligand binding (MIN) or it can perturbed by Monte Carlo (MC)
 MimimizeBackbone: True # Boolean value to set whether the backbone of the protein is minimized or not
 ActiveSiteLoops: 1 # Number of iterations of the ActiveSiteDesignMode
 nNoneCatalytic: 1 # Number of residues that are mutated/optimized by overall iteration
