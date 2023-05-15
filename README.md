@@ -27,7 +27,7 @@ Pre-requisites:
 To create the image:
   1. Download or clone the repository with:
   ```
-  git clone https://github.com/AlbertCS/AsiteDesign_container.git
+  git clone https://github.com/AlbertCS/AsiteDesign_container.git](https://github.com/BSC-CNS-EAPM/AsiteDesign-container.git
   ```
   2. Unzip the repository.
   3. Add executing rights to mount_image.sh.
