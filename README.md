@@ -22,7 +22,7 @@ Pre-requisites:
 - Have installed [Docker](https://docs.docker.com/engine/install/ubuntu/).
 - Have installed [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html).
 - Have a PyRosetta license (user and password).
-- Have sudo acces, as docker daemon is owned by root.
+- Have sudo access, as docker daemon is owned by root.
 
 To create the image:
   1. Download or clone the repository with:
@@ -70,4 +70,4 @@ mpirun -n CPUs singularity exec edesign.sif python -m ActiveSiteDesign input.yam
 
 AsiteDesign exemple
 ---
-In the folder "Templatized_control_file" you will find an exemple yaml for "Directed evolution" and "Design catalitic site" with its corresponding pdb file.
+In the folder "Templatized_control_file" you will find an exemple yaml for "Directed evolution" and "Design catalytic site" with its corresponding pdb file.
