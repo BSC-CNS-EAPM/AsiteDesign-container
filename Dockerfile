@@ -1,6 +1,6 @@
 ################## BASE IMAGE ######################
 
-FROM bsceapm/asitedesign_base:5.0
+FROM bsceapm/asitedesign_base:6.0
 
 ################## METADATA ######################
 
